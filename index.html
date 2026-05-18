@@ -83,6 +83,28 @@
             document.querySelectorAll('tab-content')[index].classList.add('active');
             document.QuerySelectorAll('.tab-btn')[index].classList.add('active');
         }
+        function formatarResposta(resultado){
+            if(resultado.erro){
+                return `<div style="color: #721c24; padding: 15px; background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 5px; font-weight: bold">
+                    errro: ${resultado.erro}</div>`;
+            }    
+            let html=`<div style="padding: 15px; background: #d4edda; color: #155724; borde": 1px solid #c3e6cb; border-radius: 5px;">`;
+                html+=`<h3 style="margin-top=0; margin-bottom: 15px; border-bottom: 1px solid #c3e6cb; padding-bottom: 5px;">Sucesso</h3>`;
+                html+=`<ul style="list-style-type: none; padding-left: 0; margin: 0;">`;
+                
+                for(const[key, value] of Obeject.entries(resultado)){
+                    let label= key.charAt(0).toUppercase() + key.slice(1);
+                    if(key.toLocaleLowerCase() === "imc"){
+                        label == "IMC";
+                    }
+                    html+=`<li style="margin-bottom: 8px; font-size: 16px;">
+                        <strong style="color: #0b2e13">${label}</strong> ${value}
+                        </li>`
+                }
+                html+=`</ul>
+                </div>`;
+                return html;
+        }
         async function calcularImc(){
             const dados = {
                 nome: document.getElementById("nome").value,
