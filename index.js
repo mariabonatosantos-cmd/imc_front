@@ -58,9 +58,6 @@
   
     async function calcularMedia(){
             const dados = {
-                
-              
-            
                 nota1: document.getElementById("nota1").value,
                 nota2: document.getElementById("nota2").value
             }
@@ -104,7 +101,8 @@
                 const resultado = await res.json();
                 if(resultado.token){
                     localStorage.setItem("token", resultado.token); // Mantém as informações de login salvasno navegador
-                     window.location.href = "index.html"; // Redireciona para a página de dashboard
+                    window.location.href = "index.html"; // Redireciona para a página de dashboard
+                    
                 }
                     
                 else{
