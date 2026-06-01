@@ -85,3 +85,37 @@
             }
         }
     
+    async function login(){
+            const dados = {
+                
+                email: document.getElementById("email").value,
+                senha: document.getElementById("senha").value
+            }
+
+            try {
+                const res = await fetch("http://localhost:3000/login", {
+                    method: "POST", 
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(dados)
+                });
+              
+                const resultado = await res.json();
+                if(resultado.token){
+                    localStorage.setItem("token", resultado.token); // Mantém as informações de login salvasno navegador
+                     window.location.href = "index.html"; // Redireciona para a página de dashboard
+                }
+                    
+                else{
+                    alert(resultado.erro);
+                }
+             
+            } catch (error) {
+       
+             document.getElementById("resultadoLogin").innerHTML = formatarResposta({
+                erro: "Ocorreu um erro inesperado. Por favor tente novamente mais tarde."
+             });   
+            }
+        }
+    
