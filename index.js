@@ -1,5 +1,8 @@
+if(window.location.pathname.endsWith('index.html') && !localStorage.getIdem('token')){
+    window.location.href = "login";
+}
 
-        function abrirTab(index){
+         function abrirTab(index){
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
 
@@ -116,4 +119,7 @@
              });   
             }
         }
-    
+    function logout(){
+        localStorage.removeItem("token")
+        window.location.href = "login.html";
+    }
