@@ -7,20 +7,22 @@
 </head>
 <body>
     <div class="tabs">
-        <button class="tab-btn active" onclick="abrirTab(0)">IMC</button>
+        <button class="tab-btn active" onclick="abrirTab(0)">Cadastro do cliente</button>
         <button class="tab-btn" onclick="abrirTab(1)">Média</button>
     </div>
 
     <a id = logout class="logout-link" onclick="logout()">Logout</a>
 
     <div class="tab-content active">
-        <h2>Calcular IMC</h2>
+        <h2>Cadastro do cliente</h2>
         <input type="text" id="nome" placeholder="Digite seu nome">
-        <input type="number" id="idade" placeholder="Digite sua idade">
-        <input type="number" id="altura" placeholder="Digite sua altura">
-        <input type="number" id="peso" placeholder="Digite seu peso">
-        <button onclick="calcularImc()">Calcular IMC</button>
-        <div class="resultado" id="resultadoImc"></div>
+        <input type="number" id="cpf" placeholder="Digite seu cpf">
+        <input type="number" id="cep" placeholder="Digite seu cep" onblur="buscarEndereco()"> 
+        <input type="text" id="rua" placeholder="Rua">
+        <input type="text" id="cidade" placeholder="Cidade">
+        <input type="text" id="estado" placeholder="Estado">
+        <input type="number" id="numero" placeholder="Número">
+        <button onclick="cadastrarCliente()">Cadastrar cliente</button>
 
     </div>
 

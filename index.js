@@ -1,4 +1,4 @@
-if(window.location.pathname.endsWith('index.html') && !localStorage.getIdem('token')){
+if(window.location.pathname.endsWith('index.html') && !localStorage.getItem('token')){
     window.location.href = "login";
 }
 
@@ -31,16 +31,15 @@ if(window.location.pathname.endsWith('index.html') && !localStorage.getIdem('tok
                 </div>`;
                 return html;
         }
-        async function calcularImc(){
+        async function cadastrarCliente(){
             const dados = {
                 nome: document.getElementById("nome").value,
-                idade: document.getElementById("idade").value,
-                altura: document.getElementById("altura").value,
-                peso: document.getElementById("peso").value
+                cpf: document.getElementById("cpf").value,
+                cep: document.getElementById("cep").value
             }
 
             try {
-                const res = await fetch("http://localhost:3000/imc", {
+                const res = await fetch("http://localhost:3000/cadastro_cliente", {
                     method: "POST", 
                     headers: {
                         "content-type": "application/json"
@@ -122,4 +121,26 @@ if(window.location.pathname.endsWith('index.html') && !localStorage.getIdem('tok
     function logout(){
         localStorage.removeItem("token")
         window.location.href = "login.html";
+    }
+    async function buscarEndereco(){
+    const cep = document.getElementById("cep").value;
+
+        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(response => {
+                if(!response.ok) {
+                    throw new error('Erro na requisição:' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // alert(data)
+                document.getElementById("rua").value = data.logradouro;
+                document.getElementById("cidade").value = data.localidade;
+                document.getElementById("estado").value = data.estado;
+                document.getElementById("numero").focus();
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+            });
     }
