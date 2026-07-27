@@ -12,8 +12,19 @@
     </div>
 
     <a id = logout class="logout-link" onclick="logout()">Logout</a>
-
+       
     <div class="tab-content active">
+        <h2>clientes cadastrados</h2>
+     
+        <div class="search-container">
+            <input type="text" id="searchInput">
+            <button onclick="searchClient()">Pesquisar</button>
+            <button onclick="listarClientes()" style="background: #6c757d;">Limpar</button>
+        </div>
+        <div id="listarClientes" class="client-list"></div>
+        </div>
+
+    <div class="tab-content">
         <h2>Cadastro do cliente</h2>
         <input type="text" id="nome" placeholder="Digite seu nome">
         <input type="number" id="cpf" placeholder="Digite seu cpf">
@@ -26,14 +37,6 @@
 
     </div>
 
-        <div class="tab-content">
-        <h2>Calcular Média</h2>
-     
-        <input type="number" id="nota1" placeholder="Digite sua primeira nota">
-        <input type="number" id="nota2" placeholder="Digite sua segunda nota">
-        <button onclick="calcularMedia()">Calcular Média</button>
-        <div class="resultado" id="resultadoMedia"></div>
-    </div>
 
         <script src="index.js"></script>
    
